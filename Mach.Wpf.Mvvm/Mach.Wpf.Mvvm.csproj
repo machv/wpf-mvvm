@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Behaviours\TreeViewSelectionBehavior.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Commands\DelegateCommandManual.cs" />
     <Compile Include="Commands\DelegateCommandGeneric.cs" />
     <Compile Include="ControlItemDoubleClick.cs" />
     <Compile Include="IFileDialogService.cs" />

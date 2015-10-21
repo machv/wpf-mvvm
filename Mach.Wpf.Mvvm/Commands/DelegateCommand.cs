@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Mach.Wpf.Mvvm.Commands
+namespace Mach.Wpf.Mvvm
 {
     /// <summary>
     /// An <see cref="ICommand"/> whose delegates can be attached for <see cref="Execute"/> and <see cref="CanExecute"/>.
@@ -62,22 +62,14 @@ namespace Mach.Wpf.Mvvm.Commands
             _action();
         }
 
-#pragma warning disable 67
         /// <summary>
         /// Occurs when changes occur that affect whether or not the command should execute.
         /// </summary>
-        public event EventHandler CanExecuteChanged;
-
-        /// <summary>
-        /// Fires <see cref="CanExecuteChanged"/> event.
-        /// </summary>
-        public void RaiseCanExecuteChanged()
+        //public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
         {
-            if (CanExecuteChanged != null)
-            {
-                CanExecuteChanged(this, EventArgs.Empty);
-            }
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
-#pragma warning restore 67
     }
 }
